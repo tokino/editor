@@ -1,8 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { TextArea } from './component/TextArea';
+import {Provider} from 'react-redux';
+import {TextArea} from './component/TextArea';
+
+import {createStore} from 'redux';
+import '../stylus/style.styl';
+import {EditorReducer} from './reducers';
+
+const store = createStore(EditorReducer);
 
 ReactDOM.render(
-	<TextArea />,
-	document.querySelector('#app')
+    <Provider store={store}>
+        <TextArea/>
+    </Provider>,
+    document.querySelector('#app'),
 );
